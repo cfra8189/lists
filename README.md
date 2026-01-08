@@ -48,12 +48,12 @@ A responsive task management dashboard for adding, editing, filtering, and track
 ## <a name="deployment"></a>Deployed Link
 
 **Live Application:**  
-GitHub Pages (auto-deployed from `main` via Actions) — expected URL: `https://<your-username>.github.io/list-lab/` (update if your repo name differs). Make sure the repo’s Pages source is set to **GitHub Actions**.
+GitHub Pages (auto-deployed from `main` via Actions) — current URL: `https://cfra8189.github.io/lists/`. Make sure the repo’s Pages source is set to **GitHub Actions**.
 
 **Repository:**  
 This repository
 
-**Note:** The Vite `base` in `vite.config.ts` is set to `/list-lab/`. If your repository name is different, update that string so assets load correctly on Pages.
+**Note:** The Vite `base` in `vite.config.ts` is set to `/lists/` to match the Pages URL. If your repository name changes, update that string so assets load correctly.
 
 ## <a name="author"></a>About The Authors
 
