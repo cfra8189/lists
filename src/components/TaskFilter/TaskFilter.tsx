@@ -1,11 +1,10 @@
 import React from "react";
 import '../../types';
-import type { TaskFilterProps } from "../../types";
-import { TaskStatus } from "../../types";
+import type { TaskFilterProps, TaskStatus } from "../../types";
 
 const TaskFilter: React.FC<TaskFilterProps> = (props) => {
-    const [status, setStatus] = React.useState<string>('');
-    const [priority, setPriority] = React.useState<string>('');
+    const [status, setStatus] = React.useState<TaskStatus | ''>('');
+    const [priority, setPriority] = React.useState<'low' | 'medium' | 'high' | ''>('');
 
     return (
         <div className="filter-row-flex">
@@ -16,9 +15,9 @@ const TaskFilter: React.FC<TaskFilterProps> = (props) => {
                     className="retro-select"
                     value={status}
                     onChange={e => {
-                        const newStatus = e.target.value as TaskStatus;
-                        setStatus(newStatus);
-                        props.onFilterChange({ status: newStatus, priority });
+                        const newStatus = (e.target.value || undefined) as TaskStatus | undefined;
+                        setStatus(e.target.value as TaskStatus | '');
+                        props.onFilterChange({ status: newStatus, priority: priority || undefined });
                     }}
                 >
                     <option value="">All</option>
@@ -34,9 +33,9 @@ const TaskFilter: React.FC<TaskFilterProps> = (props) => {
                     className="retro-select"
                     value={priority}
                     onChange={e => {
-                        const newPriority = e.target.value as 'low' | 'medium' | 'high';
-                        setPriority(newPriority);
-                        props.onFilterChange({ status, priority: newPriority });
+                        const newPriority = (e.target.value || undefined) as 'low' | 'medium' | 'high' | undefined;
+                        setPriority(e.target.value as 'low' | 'medium' | 'high' | '');
+                        props.onFilterChange({ status: status || undefined, priority: newPriority });
                     }}
                 >
                     <option value="">All</option>
